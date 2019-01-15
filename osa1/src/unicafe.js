@@ -17,6 +17,13 @@ const Feedback = ({ goodClick, neutralClick, badClick }) => {
   )
 }
 
+const Statistic = ({ name, func }) => (
+  <tr>
+    <td>{name}</td>
+    <td>{func()}</td>
+  </tr>
+)
+
 const Statistics = ({ good, neutral, bad }) => {
   const total = good + neutral + bad;
 
@@ -34,12 +41,16 @@ const Statistics = ({ good, neutral, bad }) => {
     return (
       <div>
         <h2>Statistics</h2>
-        <p>Good: {good}</p>
-        <p>Neutral: {neutral}</p>
-        <p>Bad: {bad}</p>
-        <p>Total: {total}</p>
-        <p>Average: {avg}</p>
-        <p>Positive: {percentGood}%</p>
+        <table>
+          <tbody>
+            <Statistic name='Good' func={() => good}/>
+            <Statistic name='Neutral' func={() => neutral}/>
+            <Statistic name='Bad' func={() => bad}/>
+            <Statistic name='Total' func={() => total}/>
+            <Statistic name='Average' func={() => avg}/>
+            <Statistic name='Positive' func={() => percentGood + '%'}/>
+          </tbody>
+        </table>
       </div>
     )
   }
