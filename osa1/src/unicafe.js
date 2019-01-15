@@ -18,14 +18,31 @@ const Feedback = ({ goodClick, neutralClick, badClick }) => {
 }
 
 const Statistics = ({ good, neutral, bad }) => {
-  return (
-    <div>
-      <h2>Statistics</h2>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-    </div>
-  )
+  const total = good + neutral + bad;
+
+  if (total === 0) {
+    return (
+      <div>
+        <h2>Statistics</h2>
+        <p>No feedback given yet.</p>
+      </div>
+    )
+  } else {
+    const avg = (good - bad) / total;
+    const percentGood = 100 * good / total;
+
+    return (
+      <div>
+        <h2>Statistics</h2>
+        <p>Good: {good}</p>
+        <p>Neutral: {neutral}</p>
+        <p>Bad: {bad}</p>
+        <p>Total: {total}</p>
+        <p>Average: {avg}</p>
+        <p>Positive: {percentGood}%</p>
+      </div>
+    )
+  }
 }
 
 export const Unicafe = () => {
