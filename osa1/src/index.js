@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Unicafe } from './unicafe.js'
+import { AnecdoteApp } from './anecdote.js'
 
-const App = () => ( <Unicafe/> );
+const App = () => ( <AnecdoteApp/> );
 ReactDOM.render(<App />, document.getElementById('root'));
