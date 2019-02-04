@@ -17,7 +17,7 @@ const Notification = ({message, type}) => {
 
   if (type === 'error')
     style = { ...style, color: 'red' }
-  else if (type == 'success')
+  else if (type === 'success')
     style = { ...style, color: 'green' }
 
   return (
