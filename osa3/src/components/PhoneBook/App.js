@@ -32,11 +32,6 @@ const App = () => {
   const addPerson = (event) => {
     event.preventDefault()
 
-    if (newName === '' || newNumber === '') {
-      pushError('Anna sekä nimi että puhelinnumero')
-      return
-    }
-    
     // Update existing person information
     const person = persons.find((person) => person.name === newName)
     if (person) {
@@ -53,6 +48,10 @@ const App = () => {
             pushError(`Henkilö '${person.name}' on jo valitettavasti poistettu palvelimelta`)
             setPersons(persons.filter(p => p.id !== id))
           })
+          .then(_ => {
+            setNewName('')
+            setNewNumber('')
+          })
       }
       return
     }
@@ -67,6 +66,7 @@ const App = () => {
         setNewName('')
         setNewNumber('')
       })
+      .catch(error => pushError(error.response.data.error))
   }
 
   const removePersonById = id => {
