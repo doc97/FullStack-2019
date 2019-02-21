@@ -36,9 +36,10 @@ blogsRouter.post('/', async (request, response, next) => {
     const user = await User.findById(decodedToken.id)
 
     const blog = new Blog({
-      content: body.content,
-      important: body.important === undefined ? false : body.important,
-      date: new Date(),
+      title: body.title,
+      author: body.author,
+      url: body.url === undefined ? '' : body.url,
+      likes: body.likes === undefined ? 0 : body.likes,
       user: user._id
     })
 
@@ -64,8 +65,10 @@ blogsRouter.put('/:id', (request, response, next) => {
   const body = request.body
 
   const blog = {
-    content: body.content,
-    important: body.important,
+    title: body.title,
+    author: body.author,
+    url: body.url,
+    likes: body.likes
   }
 
   Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
