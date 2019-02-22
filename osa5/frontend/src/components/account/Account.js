@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import LoginForm from './LoginForm'
 import blogService from '../../services/blogs'
 import loginService from '../../services/login'
+import Togglable from '../Togglable'
 
 const Account = ({user, setUser, pushMessage, pushError}) => {
 
@@ -34,13 +35,15 @@ const Account = ({user, setUser, pushMessage, pushError}) => {
     return (
       <>
       <h2>Log in</h2>
-      <LoginForm
-        handleLogin={handleLogin}
-        username={username}
-        setUsername={setUsername}
-        password={password}
-        setPassword={setPassword}
-      />
+      <Togglable buttonLabel='Login'>
+        <LoginForm
+          handleLogin={handleLogin}
+          username={username}
+          setUsername={setUsername}
+          password={password}
+          setPassword={setPassword}
+        />
+      </Togglable>
       </>
     )
   }
