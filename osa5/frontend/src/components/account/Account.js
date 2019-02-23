@@ -9,6 +9,8 @@ const Account = ({user, setUser, pushMessage, pushError}) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
+  const loginFormRef = React.createRef()
+
   const handleLogin = async (event) => {
     event.preventDefault()
     try {
@@ -35,7 +37,7 @@ const Account = ({user, setUser, pushMessage, pushError}) => {
     return (
       <>
       <h2>Log in</h2>
-      <Togglable buttonLabel='Login'>
+      <Togglable buttonLabel='Login' ref={loginFormRef}>
         <LoginForm
           handleLogin={handleLogin}
           username={username}
@@ -51,7 +53,7 @@ const Account = ({user, setUser, pushMessage, pushError}) => {
   return (
     <>
     <div>{user.name} logged in.</div>
-    <button onClick={() => handleLogout()}>Log out</button>
+    <button onClick={handleLogout}>Log out</button>
     </>
   )
 }
