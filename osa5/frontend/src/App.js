@@ -11,9 +11,7 @@ const App = () => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    blogService.getAll().then(blogs =>
-      setBlogs( blogs )
-    )  
+    blogService.getAll().then(blogs => setBlogs(blogs))  
   }, [])
 
   useEffect(() => {
