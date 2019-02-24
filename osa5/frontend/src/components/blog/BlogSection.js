@@ -46,7 +46,12 @@ const BlogSection = ({blogs, setBlogs, pushMessage, pushError}) => {
         url={url}
       />
     </Togglable>
-    <Blogs blogs={blogs} />
+    <Blogs
+      blogs={blogs}
+      setBlogs={setBlogs}
+      pushMessage={pushMessage}
+      pushError={pushError}
+    />
     </>
   )
 }

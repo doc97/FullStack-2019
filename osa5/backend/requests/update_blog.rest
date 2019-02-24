@@ -1,0 +1,12 @@
+PUT http://localhost:3003/api/blogs/5c7171309f562c45bcd95f2d
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjVjNmVmOGU5ZDE5ZjRjMjBlMmJhNjgzNSIsImlhdCI6MTU1MDc3OTkxNX0.OAfqvO6aXrQdM8VU_DSJMe1z7JSEgmWxyQ51jehB_RI
+
+{
+  "title": "The best title",
+  "author": "Jane Doe",
+  "url": "https://duckduckgo.com",
+  "likes": 0,
+  "user": "5c6ef8e9d19f4c20e2ba6835",
+  "id": "5c7171309f562c45bcd95f2d"
+}

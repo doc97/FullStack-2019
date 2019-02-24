@@ -18,6 +18,7 @@ const App = () => {
     const loggedInUserJSON = window.localStorage.getItem('loggedInUser')
     if (loggedInUserJSON) {
       const user = JSON.parse(loggedInUserJSON)
+      blogService.setToken(user.token)
       setUser(user)
     }
   }, [])
