@@ -4,7 +4,7 @@ import Blogs from './Blogs'
 import Togglable from '../Togglable'
 import blogService from '../../services/blogs'
 
-const BlogSection = ({blogs, setBlogs, pushMessage, pushError}) => {
+const BlogSection = ({user, blogs, setBlogs, pushMessage, pushError}) => {
 
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
@@ -47,6 +47,7 @@ const BlogSection = ({blogs, setBlogs, pushMessage, pushError}) => {
       />
     </Togglable>
     <Blogs
+      user={user}
       blogs={blogs}
       setBlogs={setBlogs}
       pushMessage={pushMessage}

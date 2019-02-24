@@ -47,6 +47,7 @@ const App = () => {
 
       { user !== null &&
         <BlogSection
+          user={user}
           blogs={blogs}
           setBlogs={setBlogs}
           pushMessage={pushMessage}

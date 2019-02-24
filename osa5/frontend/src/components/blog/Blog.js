@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Blog = ({blog, onClickLike}) => {
+const Blog = ({user, blog, onClickLike, onClickRemove}) => {
   const [expanded, setExpanded] = useState(false)
 
   const toggleExpanded = () => setExpanded(!expanded)
@@ -21,6 +21,9 @@ const Blog = ({blog, onClickLike}) => {
   const likeButtonStyle = {
     marginLeft: 5
   }
+  const removeButtonStyle = {
+    marginTop: 8
+  }
 
   const header = () => (
     <div onClick={() => toggleExpanded()}>
@@ -32,7 +35,8 @@ const Blog = ({blog, onClickLike}) => {
     <div style={detailStyle}>
       {url()}
       {likes()}
-      {user()}
+      {userInfo()}
+      {removeButton()}
     </div>
   )
 
@@ -59,10 +63,22 @@ const Blog = ({blog, onClickLike}) => {
     </div>
   )
 
-  const user = () => (
+  const userInfo = () => (
     <div>
       Added by { blog.user ? blog.user.name : 'Anonymous' }
     </div>
+  )
+
+  const removeButton = () => (
+    <>
+    { blog.user.username === user.username &&
+      <button
+        style={removeButtonStyle}
+        onClick={() => onClickRemove(blog)}>
+        Remove
+      </button>
+    }
+    </>
   )
 
   return (
