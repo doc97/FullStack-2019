@@ -18,6 +18,7 @@ const Blogs = ({blogs, setBlogs, pushMessage, pushError}) => {
       })
   }
 
+  blogs.sort((a, b) => b.likes - a.likes) // more likes first
   const blogElems = blogs.map(blog => (
     <Blog
       key={blog.id}
