@@ -11,7 +11,7 @@ const verifyToken = (token) => {
 blogsRouter.get('/', async (request, response) => {
   const blogs = await Blog
     .find({}).populate('user', { username: 1, name: 1 })
- 
+
   response.json(blogs.map(blog => blog.toJSON()))
 })
 
@@ -51,7 +51,7 @@ blogsRouter.post('/', async (request, response, next) => {
     await user.save()
 
     const responseBlog = await Blog.populate(savedBlog,
-      { path: 'user', select: { username: 1, name: 1}})
+      { path: 'user', select: { username: 1, name: 1 } })
     response.json(responseBlog.toJSON())
   } catch(exception) {
     next(exception)
@@ -96,7 +96,7 @@ blogsRouter.put('/:id', async (request, response, next) => {
 
     const result = await Blog
       .findOneAndUpdate(filter, updatedBlog, options)
-      .populate('user', { username: 1, name: 1})
+      .populate('user', { username: 1, name: 1 })
     response.json(result.toJSON())
   } catch (exception) {
     console.log(exception)
