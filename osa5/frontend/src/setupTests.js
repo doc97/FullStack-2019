@@ -1,6 +1,7 @@
 import 'jest-dom/extend-expect'
 import 'react-testing-library/cleanup-after-each'
 jest.mock('./services/blogs')
+jest.mock('./hooks')
 
 // Local Storage mock
 let savedItems = {}

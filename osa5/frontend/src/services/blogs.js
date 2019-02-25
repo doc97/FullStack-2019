@@ -1,5 +1,15 @@
 import axios from 'axios'
 
+/*
+* OBSOLETE!
+* has been replaced by a custom hook.
+* To use said custom hook:
+*
+* import { useResource } from './hooks'
+* ...
+* const [blogs, blogService] = useResource('/api/blogs')
+*/
+
 const baseUrl = '/api/blogs'
 let token = null
 

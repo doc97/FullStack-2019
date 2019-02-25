@@ -1,8 +1,7 @@
 import React from 'react'
 import Blog from './Blog'
-import blogService from '../../services/blogs'
 
-const Blogs = ({ user, blogs, setBlogs, pushMessage, pushError }) => {
+const Blogs = ({ user, blogs, blogService, pushMessage, pushError }) => {
   const onClickLike = (blog) => {
     const updatedBlog = { ...blog, likes: blog.likes + 1, user: blog.user.id }
     const id = updatedBlog.id
@@ -10,11 +9,9 @@ const Blogs = ({ user, blogs, setBlogs, pushMessage, pushError }) => {
       .update(id, updatedBlog)
       .then((returnedBlog) => {
         pushMessage(`Liked '${returnedBlog.title}'.`)
-        setBlogs(blogs.map(b => b.id !== id ? b : returnedBlog))
       })
       .catch((error) => {
         pushError(error.response.data.error)
-        setBlogs(blogs.filter(b => b.id !== id))
       })
   }
 
@@ -24,8 +21,6 @@ const Blogs = ({ user, blogs, setBlogs, pushMessage, pushError }) => {
       blogService
         .remove(id)
         .then(() => {
-          const blogsCopy = blogs.slice()
-          setBlogs(blogsCopy.filter(b => b.id !== id))
           pushMessage(`Removed blog '${blog.title}'.`)
         })
         .catch(() => {

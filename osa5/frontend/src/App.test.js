@@ -1,6 +1,5 @@
 import React from 'react'
 import { render, waitForElement } from 'react-testing-library'
-import { prettyDOM } from 'dom-testing-library'
 import App from './App'
 
 describe('<App />', () => {
@@ -29,7 +28,7 @@ describe('<App />', () => {
     window.localStorage.setItem('loggedInUser', JSON.stringify(user))
 
     const component = render(<App />)
-    await waitForElement(() => component.container.querySelector('.section-blogs'))
+    await waitForElement(() => component.container.querySelector('li'))
 
     const blogs = component.container.querySelectorAll('li')
     expect(blogs.length).toBe(3)

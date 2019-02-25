@@ -2,23 +2,24 @@ import React, { useState, useEffect } from 'react'
 import Account from './components/account/Account'
 import BlogSection from './components/blog/BlogSection'
 import Notification from './components/Notification'
-import blogService from './services/blogs'
+import { useResource } from './hooks'
 
 const App = () => {
   const [user, setUser] = useState(null)
-  const [blogs, setBlogs] = useState([])
   const [message, setMessage] = useState(null)
   const [error, setError] = useState(null)
 
+  const [blogs, blogService] = useResource('/api/blogs')
+
   useEffect(() => {
-    blogService.getAll().then(blogs => setBlogs(blogs))
+    blogService.getAll()
   }, [])
 
   useEffect(() => {
     const loggedInUserJSON = window.localStorage.getItem('loggedInUser')
     if (loggedInUserJSON) {
       const user = JSON.parse(loggedInUserJSON)
-      blogService.setToken(user.token)
+      blogService.setTokenHeader(user.token)
       setUser(user)
     }
   }, [])
@@ -41,6 +42,7 @@ const App = () => {
       <Account
         user={user}
         setUser={setUser}
+        blogService={blogService}
         pushMessage={pushMessage}
         pushError={pushError}
       />
@@ -49,7 +51,7 @@ const App = () => {
         <BlogSection
           user={user}
           blogs={blogs}
-          setBlogs={setBlogs}
+          blogService={blogService}
           pushMessage={pushMessage}
           pushError={pushError}
         />

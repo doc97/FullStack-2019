@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import BlogForm from './BlogForm'
 import Blogs from './Blogs'
 import Togglable from '../Togglable'
-import blogService from '../../services/blogs'
 
-const BlogSection = ({ user, blogs, setBlogs, pushMessage, pushError }) => {
+const BlogSection = ({ user, blogs, blogService, pushMessage, pushError }) => {
 
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
@@ -17,10 +16,9 @@ const BlogSection = ({ user, blogs, setBlogs, pushMessage, pushError }) => {
     const newBlog = { title, author, url }
     blogService
       .create(newBlog)
-      .then((returnedBlog) => {
+      .then(() => {
         blogFormRef.current.toggleVisible()
         pushMessage('Blog added')
-        setBlogs(blogs.concat(returnedBlog))
         setTitle('')
         setAuthor('')
         setUrl('')
@@ -48,7 +46,7 @@ const BlogSection = ({ user, blogs, setBlogs, pushMessage, pushError }) => {
       <Blogs
         user={user}
         blogs={blogs}
-        setBlogs={setBlogs}
+        blogService={blogService}
         pushMessage={pushMessage}
         pushError={pushError} />
     </div>

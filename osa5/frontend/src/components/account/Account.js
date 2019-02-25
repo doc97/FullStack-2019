@@ -1,11 +1,10 @@
 import React from 'react'
 import { useField } from '../../hooks'
 import LoginForm from './LoginForm'
-import blogService from '../../services/blogs'
 import loginService from '../../services/login'
 import Togglable from '../Togglable'
 
-const Account = ({ user, setUser, pushMessage, pushError }) => {
+const Account = ({ user, setUser, blogService, pushMessage, pushError }) => {
 
   const username = useField('Username', 'text')
   const password = useField('Password', 'password')
@@ -23,7 +22,7 @@ const Account = ({ user, setUser, pushMessage, pushError }) => {
       })
       window.localStorage.setItem('loggedInUser', JSON.stringify(user))
 
-      blogService.setToken(user.token)
+      blogService.setTokenHeader(user.token)
       setUser(user)
       username.reset()
       password.reset()
