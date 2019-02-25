@@ -35,18 +35,17 @@ const Account = ({ user, setUser, pushMessage, pushError }) => {
 
   if (user === null) {
     return (
-      <>
-      <h2>Log in</h2>
-      <Togglable buttonLabel='Login' ref={loginFormRef}>
-        <LoginForm
-          handleLogin={handleLogin}
-          username={username}
-          setUsername={setUsername}
-          password={password}
-          setPassword={setPassword}
-        />
-      </Togglable>
-      </>
+      <div className='section-account'>
+        <h2>Log in</h2>
+        <Togglable buttonLabel='Login' ref={loginFormRef}>
+          <LoginForm
+            handleLogin={handleLogin}
+            username={username}
+            setUsername={setUsername}
+            password={password}
+            setPassword={setPassword} />
+        </Togglable>
+      </div>
     )
   }
 

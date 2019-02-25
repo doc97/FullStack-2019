@@ -33,27 +33,25 @@ const BlogSection = ({ user, blogs, setBlogs, pushMessage, pushError }) => {
   const handleUrlChange = ({ target }) => setUrl(target.value)
 
   return (
-    <>
-    <h2>Add a blog</h2>
-    <Togglable buttonLabel='New blog' ref={blogFormRef}>
-      <BlogForm
-        onSubmit={onSubmit}
-        handleTitleChange={handleTitleChange}
-        handleAuthorChange={handleAuthorChange}
-        handleUrlChange={handleUrlChange}
-        title={title}
-        author={author}
-        url={url}
-      />
-    </Togglable>
-    <Blogs
-      user={user}
-      blogs={blogs}
-      setBlogs={setBlogs}
-      pushMessage={pushMessage}
-      pushError={pushError}
-    />
-    </>
+    <div className='section-blogs'>
+      <h2>Add a blog</h2>
+      <Togglable buttonLabel='New blog' ref={blogFormRef}>
+        <BlogForm
+          onSubmit={onSubmit}
+          handleTitleChange={handleTitleChange}
+          handleAuthorChange={handleAuthorChange}
+          handleUrlChange={handleUrlChange}
+          title={title}
+          author={author}
+          url={url} />
+      </Togglable>
+      <Blogs
+        user={user}
+        blogs={blogs}
+        setBlogs={setBlogs}
+        pushMessage={pushMessage}
+        pushError={pushError} />
+    </div>
   )
 }
 
