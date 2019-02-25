@@ -1,5 +1,3 @@
-let token = null
-
 const blogs = [
   {
     id: '5a451df7571c224a31b5c8ce',
@@ -36,7 +34,7 @@ const blogs = [
   },
 ]
 
-const setToken = newToken => token = `Bearer ${newToken}`
+const setToken = (_) => {}
 const getAll = () => Promise.resolve(blogs)
 
 export default { setToken, getAll }

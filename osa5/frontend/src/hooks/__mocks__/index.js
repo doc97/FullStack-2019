@@ -9,7 +9,7 @@ export const useField = (name, type) => {
   return { type, value, name, onChange, reset }
 }
 
-export const useResource = (baseUrl) => {
+export const useResource = (_) => {
   const blogs = [
     {
       id: '5a451df7571c224a31b5c8ce',
@@ -47,7 +47,7 @@ export const useResource = (baseUrl) => {
   ]
 
   const service = {
-    setTokenHeader: (newToken) => {},
+    setTokenHeader: (_) => {},
     getAll: () => Promise.resolve(blogs)
   }
 

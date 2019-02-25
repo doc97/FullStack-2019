@@ -2,6 +2,7 @@ module.exports = {
   "env": {
     "browser": true,
     "es6": true,
+    "commonjs": true,
     "jest/globals": true
   },
   "extends": [ "eslint:recommended", "plugin:react/recommended" ],
@@ -23,7 +24,8 @@ module.exports = {
     "object-curly-spacing": [ "error", "always" ],
     "arrow-spacing": [ "error", { "before": true, "after": true } ],
     "no-console": 0,
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "no-unused-vars": [ "error", { "varsIgnorePattern": "[tT]mp", "argsIgnorePattern": "^_$" } ]
   },
   "settings": {
     "react": {
