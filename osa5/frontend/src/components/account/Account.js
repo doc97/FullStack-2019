@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useField } from '../../hooks'
 import LoginForm from './LoginForm'
 import blogService from '../../services/blogs'
 import loginService from '../../services/login'
@@ -6,22 +7,27 @@ import Togglable from '../Togglable'
 
 const Account = ({ user, setUser, pushMessage, pushError }) => {
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const username = useField('Username', 'text')
+  const password = useField('Password', 'password')
+  const { reset: uTmpReset, ...usernameProps } = username
+  const { reset: pTmpReset, ...passwordProps } = password
 
   const loginFormRef = React.createRef()
 
   const handleLogin = async (event) => {
     event.preventDefault()
     try {
-      const user = await loginService.login({ username, password })
+      const user = await loginService.login({
+        username: username.value,
+        password: password.value
+      })
       window.localStorage.setItem('loggedInUser', JSON.stringify(user))
 
       blogService.setToken(user.token)
       setUser(user)
-      setUsername('')
-      setPassword('')
-      pushMessage(`User ${username} logged in.`)
+      username.reset()
+      password.reset()
+      pushMessage(`User ${username.value} logged in.`)
     } catch (error) {
       pushError('Username or password is incorrect!')
     }
@@ -40,10 +46,8 @@ const Account = ({ user, setUser, pushMessage, pushError }) => {
         <Togglable buttonLabel='Login' ref={loginFormRef}>
           <LoginForm
             handleLogin={handleLogin}
-            username={username}
-            setUsername={setUsername}
-            password={password}
-            setPassword={setPassword} />
+            username={usernameProps}
+            password={passwordProps} />
         </Togglable>
       </div>
     )
