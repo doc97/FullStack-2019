@@ -2,7 +2,7 @@ import React from 'react'
 import Blog from './Blog'
 import blogService from '../../services/blogs'
 
-const Blogs = ({user, blogs, setBlogs, pushMessage, pushError}) => {
+const Blogs = ({ user, blogs, setBlogs, pushMessage, pushError }) => {
   const onClickLike = (blog) => {
     const updatedBlog = { ...blog, likes: blog.likes + 1, user: blog.user.id }
     const id = updatedBlog.id

@@ -4,7 +4,7 @@ import Blogs from './Blogs'
 import Togglable from '../Togglable'
 import blogService from '../../services/blogs'
 
-const BlogSection = ({user, blogs, setBlogs, pushMessage, pushError}) => {
+const BlogSection = ({ user, blogs, setBlogs, pushMessage, pushError }) => {
 
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
@@ -28,9 +28,9 @@ const BlogSection = ({user, blogs, setBlogs, pushMessage, pushError}) => {
       .catch(error => pushError(error.response.data.error))
   }
 
-  const handleTitleChange = ({target}) => setTitle(target.value)
-  const handleAuthorChange = ({target}) => setAuthor(target.value)
-  const handleUrlChange = ({target}) => setUrl(target.value)
+  const handleTitleChange = ({ target }) => setTitle(target.value)
+  const handleAuthorChange = ({ target }) => setAuthor(target.value)
+  const handleUrlChange = ({ target }) => setUrl(target.value)
 
   return (
     <>

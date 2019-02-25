@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Blog = ({user, blog, onClickLike, onClickRemove}) => {
+const Blog = ({ user, blog, onClickLike, onClickRemove }) => {
   const [expanded, setExpanded] = useState(false)
 
   const toggleExpanded = () => setExpanded(!expanded)
