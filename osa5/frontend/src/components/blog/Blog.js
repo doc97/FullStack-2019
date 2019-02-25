@@ -26,13 +26,13 @@ const Blog = ({ user, blog, onClickLike, onClickRemove }) => {
   }
 
   const header = () => (
-    <div onClick={() => toggleExpanded()}>
+    <div className='header' onClick={() => toggleExpanded()}>
       {blog.title} (by {blog.author})
     </div>
   )
 
   const details = () => (
-    <div style={detailStyle}>
+    <div className='details' style={detailStyle}>
       {url()}
       {likes()}
       {userInfo()}
@@ -43,7 +43,7 @@ const Blog = ({ user, blog, onClickLike, onClickRemove }) => {
   const url = () => {
     if (blog.url) {
       return (
-        <div>
+        <div className='url'>
           <a href={blog.url}>{blog.url}</a>
           <br />
         </div>
@@ -53,7 +53,7 @@ const Blog = ({ user, blog, onClickLike, onClickRemove }) => {
   }
 
   const likes = () => (
-    <div>
+    <div className='likes'>
       {blog.likes} likes
       <button
         style={likeButtonStyle}
@@ -64,7 +64,7 @@ const Blog = ({ user, blog, onClickLike, onClickRemove }) => {
   )
 
   const userInfo = () => (
-    <div>
+    <div className='user-info'>
       Added by { blog.user ? blog.user.name : 'Anonymous' }
     </div>
   )
