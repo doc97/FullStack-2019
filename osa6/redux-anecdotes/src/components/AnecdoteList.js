@@ -7,7 +7,7 @@ const AnecdoteList = (props) => {
     props.store.dispatch(voteAnecdote(id))
   }
   
-  const anecdotes = props.store.getState().sort((a, b) => b.votes - a.votes)
+  const anecdotes = props.store.getState().anecdotes.sort((a, b) => b.votes - a.votes)
   const elems = anecdotes.map(anecdote =>
     <Anecdote
       anecdote={anecdote}
