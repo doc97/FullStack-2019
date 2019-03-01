@@ -26,16 +26,8 @@ describe('anecdote reducer', () => {
       type: 'DO_NOTHING'
     }
 
-    const expected = anecdotesAtStart.map(a => {
-      return {
-        content: a,
-        votes: 0
-      }
-    })
-
     const newState = anecdoteReducer(undefined, action)
-      .map(elem => { return { ...elem, id: undefined } })
-    expect(newState).toEqual(expected)
+    expect(newState).toEqual([])
   })
 
   test('should return unchanged state when called with unknown action', () => {

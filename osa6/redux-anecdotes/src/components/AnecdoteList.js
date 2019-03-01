@@ -18,6 +18,7 @@ const AnecdoteList = (props) => {
 
   const elems = props.anecdotes.map(anecdote =>
     <Anecdote
+      key={anecdote.id}
       anecdote={anecdote}
       voteOnClick={() => vote(anecdote.id)} />
   )
