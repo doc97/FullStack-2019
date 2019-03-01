@@ -1,9 +1,8 @@
 import deepFreeze from 'deep-freeze'
-import notificationReducer from './notificationReducer'
+import notificationReducer, { setNotification, unsetNotification } from './notificationReducer'
 
 describe('notification reducer', () => {
-  const initialState = 'hello world'
-
+  const initialState = ''
 
   test('should return a proper initial state when called with undefined state', () => {
     const action = { type: 'DO_NOTHING' }
@@ -16,7 +15,25 @@ describe('notification reducer', () => {
     const state = initialState
 
     deepFreeze(state)
-    const newState = notificationReducer(undefined, action)
+    const newState = notificationReducer(state, action)
     expect(newState).toEqual(state)
+  })
+
+  test('notification is set', () => {
+    const action = setNotification('foobar')
+    const state = initialState
+
+    deepFreeze(state)
+    const newState = notificationReducer(state, action)
+    expect(newState).toEqual('foobar')
+  })
+
+  test('notification is unset', () => {
+    const action = unsetNotification()
+    const state = initialState
+
+    deepFreeze(state)
+    const newState = notificationReducer(state, action)
+    expect(newState).toEqual(initialState)
   })
 })
