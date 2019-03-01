@@ -8,8 +8,7 @@ const AnecdoteList = (props) => {
   const vote = (id) => {
     const anecdote = props.anecdotes.find(a => a.id === id)
     props.voteAnecdote(anecdote.votes + 1, id)
-    const timeoutId = setTimeout(() => { props.unsetNotification() }, 5000)
-    props.setNotification(`You voted '${anecdote.content}'`, timeoutId)
+    props.setNotification(`You voted '${anecdote.content}'`, 5000)
   }
 
   const elems = props.anecdotes.map(anecdote =>

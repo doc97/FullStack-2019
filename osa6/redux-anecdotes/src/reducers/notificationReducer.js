@@ -17,13 +17,16 @@ const notificationReducer = (state = initialState, action) => {
   }
 }
 
-export const setNotification = (notification, timeoutId) => {
-  return {
-    type: 'SET_NOTIFICATION',
-    data: {
-      notification,
-      timeoutId
-    }
+export const setNotification = (notification, timeout) => {
+  return (dispatch) => {
+    const timeoutId = setTimeout(() => { dispatch(unsetNotification()) }, timeout)
+    dispatch({
+      type: 'SET_NOTIFICATION',
+      data: {
+        notification,
+        timeoutId
+      }
+    })
   }
 }
 
